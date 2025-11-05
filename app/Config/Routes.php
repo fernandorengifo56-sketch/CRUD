@@ -5,5 +5,11 @@ use CodeIgniter\Router\RouteCollection;
 /**
  * @var RouteCollection $routes
  */
+
 $routes->get('/', 'Home::index');
-$routes->get('r', 'C_carros::index');
+//tabla
+$routes->get('r', 'c_carros::index');
+//crear
+$routes->get('c', 'c_carros::crear');
+//guardar
+$routes->post('agregar', 'C_carros::agregar');

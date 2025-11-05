@@ -1,48 +1,47 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document Title</title>
+ <?=$header?>
+<br>
 
-          <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
-</head>
-<body>
-    Catalogo de Carros
-    <?php print_r($C_carros); ?>
-    <div class="container"> 
+<a href="<?=base_url('c')?>">añadir vehiculo</a>
+
+
+
+
+
+
+
+
+ <div class="container"> 
         <table class="table table-light">
             <thead class="thead-light">
                 <tr>
                     <th>ID</th>
-                    <th>Nombre</th>
                     <th>Modelo</th>
-                    <th>Motor</th>
                     <th>Combustible</th>
                     <th>Transmisión</th>
-                    <th>Puertas</th>
-                    <th>Plazas</th>
-                    <th>Año</th>
-                    <th>*</th>
+                    <th>Color</th>
+                    <th>Motor</th>
+                    <th>plazas</th>
+                    <th>muestra</th>
+                    <th>*</th>                   
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <th>ID</th>
-                    <th>Nombre</th>
-                    <th>Modelo</th>
-                    <th>Motor</th>
-                    <th>Combustible</th>
-                    <th>Transmisión</th>
-                    <th>Puertas</th>
-                    <th>Plazas</th>
-                    <th>Año</th>
-                    <th>Editar/Eliminar</th>
-                </tr>
+
+            <?php foreach($C_carros as $carro): ?>
+    <tr>
+        <th><?=$carro['id']?></th>
+        <th><?=$carro['modelo']?></th>
+        <th><?=$carro['combustible']?></th>
+        <th><?=$carro['transmision']?></th>
+        <th><?=$carro['color']?></th>
+        <th><?=$carro['motor']?></th>
+        <th><?=$carro['plazas']?></th>
+        <th><?=$carro['muestra']?></th>
+        <th>Editar/Eliminar</th>
+    </tr>
+<?php endforeach; ?>
+
             </tbody>
         </table>
 
-    </div>
-
-</body>
-</html>
+     <?=$fooder?>

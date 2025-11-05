@@ -1,11 +1,54 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document Title</title>
-</head>
-<body>
-    Añadir Carros
-</body>
-</html>
+<?=$header?>
+<br>
+Añadir Carros
+
+
+<form method="post" action="<?= base_url('/agregar') ?>" enctype="multipart/form-data">
+  <div class="form-group">
+    <label for="modelo">Modelo</label>
+    <input id="modelo" class="form-control" type="text" name="modelo">
+  </div>
+
+  <div class="form-group">
+    <label for="combustible">Combustible</label>
+    <input id="combustible" class="form-control" type="text" name="combustible">
+  </div>
+
+  <div class="form-group">
+    <label for="transmision">Transmisión</label>
+    <input id="transmision" class="form-control" type="text" name="transmision">
+  </div>
+
+  <div class="form-group">
+    <label for="color">Color</label>
+    <input id="color" class="form-control" type="text" name="color">
+  </div>
+
+  <div class="form-group">
+    <label for="motor">Motor</label>
+    <input id="motor" class="form-control" type="text" name="motor">
+  </div>
+
+  <div class="form-group">
+    <label for="plazas">Plazas</label>
+    <input id="plazas" class="form-control" type="text" name="plazas">
+  </div>
+
+  <div class="custom-file form-group">
+    <input id="muestra" class="custom-file-input" type="file" name="muestra">
+    <label for="muestra" class="custom-file-label">Muestra</label>
+  </div>
+
+  <button class="btn btn-success" type="submit">Agregar</button>
+</form>
+
+
+
+
+
+
+
+
+
+
+    <?=$fooder?>
