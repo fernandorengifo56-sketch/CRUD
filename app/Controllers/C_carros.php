@@ -59,6 +59,7 @@ class C_carros extends Controller{
 
 
 
+<<<<<<< HEAD
 
 
 
@@ -86,6 +87,12 @@ class C_carros extends Controller{
 
 
 public function editar($id = null){
+=======
+        return $this->response->redirect(site_url('/r'));
+    }
+  
+  public function editar($id = null){
+>>>>>>> parent of 8863f10 (validaciones)
 
     print_r($id);
 
@@ -98,6 +105,7 @@ public function editar($id = null){
 
 
      return view('carros/editar', $dat);
+
 
 }
 
