@@ -3,13 +3,6 @@
 
 <a href="<?=base_url('c')?>" class="btn btn-danger" type="button">añadir vehiculo </a>
 
-
-
-
-
-
-
-
  <div class="container"> 
         <table class="table table-light">
             <thead class="thead-light">
