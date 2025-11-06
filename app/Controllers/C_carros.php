@@ -40,8 +40,8 @@ class C_carros extends Controller{
                 'combustible' => $this->request->getVar('combustible'),
                 'transmision' => $this->request->getVar('transmision'),
                 'motor' => $this->request->getVar('motor'),
-                'color' => $this->request->getVar('plazas'),
-                'plazas' => $this->request->getVar('modelo'),
+                'color' => $this->request->getVar('color'),
+                'plazas' => $this->request->getVar('plazas'),
                 'muestra' => $nuevoNombre
             ];
 
@@ -56,36 +56,21 @@ class C_carros extends Controller{
         $error = $muestra ? $muestra->getErrorString() : 'No se envió archivo';
         echo "Error: " . $error;
     }
+  
+      public function eliminar($id=null){
 
+        $dcarro = new M_carros(); //variable para eliminar un carro
+        $datacarro = $dcarro->where('id',$id)->first(); //variable que le indica a la otra que registro de la tabla eliminar
 
+        $muestra = ('../public/uploads/'.$datacarro['muestra']); //variable para borrar la imagen del respectivo registro
+        unlink($muestra);
+        
+        $dcarro->where('id',$id)->delete($id);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-public function editar($id = null){
+        return $this->response->redirect(site_url('/r'));
+    }
+  
+  public function editar($id = null){
 
     print_r($id);
 
@@ -98,6 +83,7 @@ public function editar($id = null){
 
 
      return view('carros/editar', $dat);
+
 
 }
 

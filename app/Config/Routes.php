@@ -15,25 +15,8 @@ $routes->get('c', 'c_carros::crear');
 $routes->post('agregar', 'C_carros::agregar');
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+//eliminar
+$routes->get('d/(:num)', 'C_carros::eliminar/$1');
 
 //update
 
@@ -41,3 +24,4 @@ $routes->post('actualizar', 'C_carros::actualizar');
 
 
 $routes->get('editar/(:num)', 'C_carros::editar/$1');
+

@@ -18,8 +18,8 @@
                     <th>Modelo</th>
                     <th>Combustible</th>
                     <th>Transmisión</th>
-                    <th>Color</th>
                     <th>Motor</th>
+                    <th>Color</th>
                     <th>plazas</th>
                     <th>muestra</th>
                     <th>*</th>                   
@@ -30,18 +30,21 @@
             <?php foreach($C_carros as $carro): ?>
     <tr>
         <th><?=$carro['id']?></th>
-        <th><?=$carro['modelo']?></th>
-        <th><?=$carro['combustible']?></th>
-        <th><?=$carro['transmision']?></th>
-        <th><?=$carro['color']?></th>
-        <th><?=$carro['motor']?></th>
-        <th><?=$carro['plazas']?></th>
-        <th><?=$carro['muestra']?></th>
+      
+              <td><?=$carro['modelo']?></td>
+        <td><?=$carro['combustible']?></td>
+        <td><?=$carro['transmision']?></td>
+        <td><?=$carro['motor']?></td>
+        <td><?=$carro['color']?></td>
+        <td><?=$carro['plazas']?></td>
+        <td><?=$carro['muestra']?></td>
         <th>
-        
-        
-        
-        <a href="<?=base_url('editar/'.$carro['id'])?>" class="btn btn-warning" type="button">editar</a>/Eliminar</th>
+            <a href="<?=base_url('d/'.$carro['id']);?>"class="btn btn-danger" type="button">Eliminar</a>
+           <a href="<?=base_url('editar/'.$carro['id'])?>" class="btn btn-warning" type="button">editar</a>
+        </th>
+      
+      
+
     </tr>
 <?php endforeach; ?>
 
