@@ -2,18 +2,19 @@
 <br>
 
 
+
 <div class="card">
     <div class="card-body">
         <h5 class="card-title">Añadir Carros</h5>
         <p class="card-text"><form method="post" action="<?= base_url('/agregar') ?>" enctype="multipart/form-data">
   <div class="form-group">
     <label for="modelo">Modelo</label>
-    <input id="modelo" class="form-control" type="text" name="modelo">
+    <input id="modelo" value="<?=old('modelo')?>" class="form-control" type="text" name="modelo">
   </div>
 
   <div class="form-group">
     <label for="combustible">Combustible</label>
-    <input id="combustible" class="form-control" type="text" name="combustible">
+    <input id="combustible" value="<?=old('combustible')?>"  class="form-control" type="text" name="combustible">
   </div>
 
   <div class="form-group">
