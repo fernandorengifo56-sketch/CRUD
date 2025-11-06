@@ -1,9 +1,11 @@
 <?=$header?>
 <br>
-Añadir Carros
 
 
-<form method="post" action="<?= base_url('/agregar') ?>" enctype="multipart/form-data">
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">Añadir Carros</h5>
+        <p class="card-text"><form method="post" action="<?= base_url('/agregar') ?>" enctype="multipart/form-data">
   <div class="form-group">
     <label for="modelo">Modelo</label>
     <input id="modelo" class="form-control" type="text" name="modelo">
@@ -40,7 +42,9 @@ Añadir Carros
   </div>
 
   <button class="btn btn-success" type="submit">Agregar</button>
-</form>
+</form></p>
+    </div>
+</div>
 
 
 
