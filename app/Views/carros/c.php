@@ -37,8 +37,11 @@
   </div>
 
   <div class="custom-file form-group">
-    <input id="muestra" class="custom-file-input" type="file" name="muestra">
     <label for="muestra" class="custom-file-label">Muestra</label>
+    </div style="margin-top: 30px;">
+    <img class="img-thumbnail" src="<?=base_url()?>/uploads/<?='muestra'?>" width="100" alt="">
+    </div>
+    <input id="muestra" class="custom-file-input" type="file" name="muestra">
   </div>
 
   <button class="btn btn-success" type="submit">Agregar</button>
