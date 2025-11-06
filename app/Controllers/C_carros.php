@@ -5,7 +5,7 @@ use CodeIgniter\Controller;
 use App\Models\M_carros;
 class C_carros extends Controller{
 
-       public function index(){
+       public function index(){ //Para la pag principal donde está la tabla
               //VARIABLES
               $carro= new M_carros(); //variable que crea un modelo para albergar los datos de la tabla
               $dat['C_carros']= $carro->orderBy('ID','ASC')->findAll(); //variable que maneja los datos del modelo ya creado
@@ -14,7 +14,7 @@ class C_carros extends Controller{
               $dat['fooder'] = view('temas/fooder'); // el fooder
               return view('carros/r',$dat); //muestra los datos
        }
-   public function crear(){
+   public function crear(){ //Para añadir carros
 
        $dat['header'] = view('temas/header'); // el header
               $dat['fooder'] = view('temas/fooder'); // el fooder
@@ -22,13 +22,13 @@ class C_carros extends Controller{
        return view('carros/c', $dat);
 }
        
-       public function agregar(){
+       public function agregar(){ //Para agragar las imagenes
         $carro = new M_carros();
 
        
         $muestra = $this->request->getFile('muestra');
 
-        // Validar que exista y sea valido antes de mover
+        // Validar que la imagn exista y sea valida antes de mover
         if ($muestra && $muestra->isValid() && ! $muestra->hasMoved()) {
             $nuevoNombre = $muestra->getRandomName();
 
@@ -40,59 +40,36 @@ class C_carros extends Controller{
                 'combustible' => $this->request->getVar('combustible'),
                 'transmision' => $this->request->getVar('transmision'),
                 'motor' => $this->request->getVar('motor'),
-                'color' => $this->request->getVar('plazas'),
-                'plazas' => $this->request->getVar('modelo'),
+                'color' => $this->request->getVar('color'),
+                'plazas' => $this->request->getVar('plazas'),
                 'muestra' => $nuevoNombre
             ];
 
-            // Usar la instancia correcta ($carro) para insertar
+            // (notica)Usar la instancia correcta ($carro) para insertar
             $carro->insert($dat);
 
-            echo "ingresado a db";
-            return;
+            return $this->response->redirect(site_url('/r'));
         }
 
-        // Si no llegó archivo o hubo error
+        // Si no llegó la imagen o hubo error
         $error = $muestra ? $muestra->getErrorString() : 'No se envió archivo';
         echo "Error: " . $error;
     }
-
-
-
-<<<<<<< HEAD
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-public function editar($id = null){
-=======
-        return $this->response->redirect(site_url('/r'));
-    }
   
+      public function eliminar($id=null){ //Para eliminar un carro
+
+        $dcarro = new M_carros(); //variable para eliminar cualquier carro
+        $datacarro = $dcarro->where('id',$id)->first(); //variable que le indica a la otra que registro de la tabla eliminar
+
+        $muestra = ('../public/uploads/'.$datacarro['muestra']); //variable para borrar la imagen del carro en cuestion
+        unlink($muestra);
+        
+        $dcarro->where('id',$id)->delete($id); //adios imagen
+
+
   public function editar($id = null){
->>>>>>> parent of 8863f10 (validaciones)
+        return $this->response->redirect(site_url('/r')); //volver a la pag principal
+    }
 
     print_r($id);
 
@@ -110,7 +87,7 @@ public function editar($id = null){
 }
 
     
-    public function actualizar(){
+    public function actualizar(){ //Para cambiar la imagen del carro
 
         $carro = new M_carros();
 
@@ -125,18 +102,18 @@ public function editar($id = null){
             'color' => $this->request->getVar('color'),
             'plazas' => $this->request->getVar('plazas')];
 
-        // Validar que exista y sea valido antes de mover
+        // Validar que exista la imgaeny sea valido antes de mover
         if ($muestra && $muestra->isValid() && ! $muestra->hasMoved()) {
             $nuevoNombre = $muestra->getRandomName();
 
-            // Mover usando fcpaht para evitar rutas relativas incorrectas
+            // Mover usando fcpaht para evitar rutas relativas incorrectas (el otro codgio del tutorial no funcionó aquí y idk porqué .-.)
             $muestra->move(FCPATH . 'uploads', $nuevoNombre);
 
 
 }
           $id = $this->request->getVar('id');
           $carro->update($id, $dat);
-          return $this->response->redirect(site_url('/r'));        
+          return $this->response->redirect(site_url('/r'));        //retorno al la pag principal (la vista de la tabla)
 }
 
 }

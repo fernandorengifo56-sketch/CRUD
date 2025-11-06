@@ -15,25 +15,6 @@ $routes->get('c', 'c_carros::crear');
 $routes->post('agregar', 'C_carros::agregar');
 
 
-<<<<<<< HEAD
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 //update
@@ -47,9 +28,4 @@ $routes->post('actualizar', 'C_carros::actualizar');
 
 
 $routes->get('editar/(:num)', 'C_carros::editar/$1');
->>>>>>> parent of 8863f10 (validaciones)
 
-$routes->post('actualizar', 'C_carros::actualizar');
-
-
-$routes->get('editar/(:num)', 'C_carros::editar/$1');
