@@ -22,17 +22,37 @@ class C_carros extends Controller{
        return view('carros/c', $dat);
 }
        
-       public function agregar(){ //Para agragar las imagenes
+       public function agregar(){ 
         $carro = new M_carros();
-
        
         $muestra = $this->request->getFile('muestra');
 
-        // Validar que la imagn exista y sea valida antes de mover
+        $validationRules = [                            
+            'modelo'      => 'required',
+            'combustible' => 'required',
+            'transmision' => 'required',
+            'motor'       => 'required',
+            'color'       => 'required',
+            'plazas'      => 'required|numeric',
+            'muestra'     => [
+                'rules' => 'permit_empty|mime_in[muestra,image/jpg,image/jpeg,image/png]|max_size[muestra,1024]'
+            ]
+        ];
+
+        
+        if (!$this->validate($validationRules)) {
+            
+            $session=session();
+            $session->setFlashdata('error', 'Error de validación. Por favor, revise los datos ingresados.');
+            
+             return redirect()->back()->withInput();
+        }
+
+
+      
         if ($muestra && $muestra->isValid() && ! $muestra->hasMoved()) {
             $nuevoNombre = $muestra->getRandomName();
 
-            // Mover usando fcpaht para evitar rutas relativas incorrectas
             $muestra->move(FCPATH . 'uploads', $nuevoNombre);
 
             $dat = [
@@ -45,13 +65,13 @@ class C_carros extends Controller{
                 'muestra' => $nuevoNombre
             ];
 
-            // (notica)Usar la instancia correcta ($carro) para insertar
+            
             $carro->insert($dat);
 
-            return $this->response->redirect(site_url('/r'));
+            return $this->response->redirect(site_url('/r'));   
         }
 
-        // Si no llegó la imagen o hubo error
+        
         $error = $muestra ? $muestra->getErrorString() : 'No se envió archivo';
         echo "Error: " . $error;
     }
@@ -66,13 +86,10 @@ class C_carros extends Controller{
         
         $dcarro->where('id',$id)->delete($id); //adios imagen
 
-
-  public function editar($id = null){
         return $this->response->redirect(site_url('/r')); //volver a la pag principal
     }
-
-    print_r($id);
-
+  
+  public function editar($id = null){
      $carro = new M_carros();
 
      $dat['M_carro'] = $carro->where('id', $id)->first();
@@ -83,40 +100,61 @@ class C_carros extends Controller{
 
      return view('carros/editar', $dat);
 
-
 }
-
-    
-    public function actualizar(){ //Para cambiar la imagen del carro
-
+    public function actualizar()
+    {
         $carro = new M_carros();
-
         $id = $this->request->getVar('id');
-
         $muestra = $this->request->getFile('muestra');
+
+        
+        $validationRules = [
+            'modelo'      => 'required',
+            'combustible' => 'required',
+            'transmision' => 'required',
+            'motor'       => 'required',
+            'color'       => 'required',
+            'plazas'      => 'required|numeric',
+            'muestra'     => [
+                'rules' => 'permit_empty|mime_in[muestra,image/jpg,image/jpeg,image/png]|max_size[muestra,1024]'
+            ]
+        ];
+
+        
+        if (!$this->validate($validationRules)) {
+            
+            $session=session();
+            $session->setFlashdata('error', 'Error de validación. Por favor, revise los datos ingresados.');
+            
+            return redirect()->back()->withInput();
+            
+    }
+        
+
+        
         $dat = [
-            'modelo' => $this->request->getVar('modelo'),
+            'modelo'      => $this->request->getVar('modelo'),
             'combustible' => $this->request->getVar('combustible'),
             'transmision' => $this->request->getVar('transmision'),
-            'motor' => $this->request->getVar('motor'),
-            'color' => $this->request->getVar('color'),
-            'plazas' => $this->request->getVar('plazas')];
+            'motor'       => $this->request->getVar('motor'),
+            'color'       => $this->request->getVar('color'),
+            'plazas'      => $this->request->getVar('plazas')
+        ];
 
-        // Validar que exista la imgaeny sea valido antes de mover
-        if ($muestra && $muestra->isValid() && ! $muestra->hasMoved()) {
+       
+        if ($muestra && $muestra->isValid() && !$muestra->hasMoved()) {
             $nuevoNombre = $muestra->getRandomName();
-
-            // Mover usando fcpaht para evitar rutas relativas incorrectas (el otro codgio del tutorial no funcionó aquí y idk porqué .-.)
             $muestra->move(FCPATH . 'uploads', $nuevoNombre);
+            $dat['muestra'] = $nuevoNombre;
+        }
+
+        $carro->update($id, $dat);
+        return $this->response->redirect(site_url('/r'));   
+    }
+}
 
 
-}
-          $id = $this->request->getVar('id');
-          $carro->update($id, $dat);
-          return $this->response->redirect(site_url('/r'));        //retorno al la pag principal (la vista de la tabla)
-}
 
-}
 
 
 
