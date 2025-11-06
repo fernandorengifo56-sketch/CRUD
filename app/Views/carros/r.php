@@ -30,10 +30,12 @@
         <td><?=$carro['motor']?></td>
         <td><?=$carro['color']?></td>
         <td><?=$carro['plazas']?></td>
-        <td><?=$carro['muestra']?></td>
+        <td>
+            <img class="img-thumbnail" src="<?=base_url()?>/uploads/<?=$carro['muestra']?>" width="100" alt="">
+        </td>
         <th>
+            <a href="<?=base_url('editar/'.$carro['id'])?>" class="btn btn-warning" type="button">editar</a>
             <a href="<?=base_url('d/'.$carro['id']);?>"class="btn btn-danger" type="button">Eliminar</a>
-           <a href="<?=base_url('editar/'.$carro['id'])?>" class="btn btn-warning" type="button">editar</a>
         </th>
       
       

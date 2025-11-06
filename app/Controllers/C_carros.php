@@ -5,7 +5,7 @@ use CodeIgniter\Controller;
 use App\Models\M_carros;
 class C_carros extends Controller{
 
-       public function index(){
+       public function index(){ //Para la pag principal donde está la tabla
               //VARIABLES
               $carro= new M_carros(); //variable que crea un modelo para albergar los datos de la tabla
               $dat['C_carros']= $carro->orderBy('ID','ASC')->findAll(); //variable que maneja los datos del modelo ya creado
@@ -14,7 +14,7 @@ class C_carros extends Controller{
               $dat['fooder'] = view('temas/fooder'); // el fooder
               return view('carros/r',$dat); //muestra los datos
        }
-   public function crear(){
+   public function crear(){ //Para añadir carros
 
        $dat['header'] = view('temas/header'); // el header
               $dat['fooder'] = view('temas/fooder'); // el fooder
@@ -22,12 +22,12 @@ class C_carros extends Controller{
        return view('carros/c', $dat);
 }
        
-       public function agregar(){
+       public function agregar(){ 
         $carro = new M_carros();
        
         $muestra = $this->request->getFile('muestra');
 
-        $validationRules = [
+        $validationRules = [                            
             'modelo'      => 'required',
             'combustible' => 'required',
             'transmision' => 'required',
@@ -76,17 +76,17 @@ class C_carros extends Controller{
         echo "Error: " . $error;
     }
   
-      public function eliminar($id=null){
+      public function eliminar($id=null){ //Para eliminar un carro
 
-        $dcarro = new M_carros(); //variable para eliminar un carro
+        $dcarro = new M_carros(); //variable para eliminar cualquier carro
         $datacarro = $dcarro->where('id',$id)->first(); //variable que le indica a la otra que registro de la tabla eliminar
 
-        $muestra = ('../public/uploads/'.$datacarro['muestra']); //variable para borrar la imagen del respectivo registro
+        $muestra = ('../public/uploads/'.$datacarro['muestra']); //variable para borrar la imagen del carro en cuestion
         unlink($muestra);
         
-        $dcarro->where('id',$id)->delete($id);
+        $dcarro->where('id',$id)->delete($id); //adios imagen
 
-        return $this->response->redirect(site_url('/r'));
+        return $this->response->redirect(site_url('/r')); //volver a la pag principal
     }
   
   public function editar($id = null){
@@ -148,10 +148,8 @@ class C_carros extends Controller{
             $dat['muestra'] = $nuevoNombre;
         }
 
-       
         $carro->update($id, $dat);
-
-       // return $this->response->redirect(site_url('/r'));
+        return $this->response->redirect(site_url('/r'));   
     }
 }
 

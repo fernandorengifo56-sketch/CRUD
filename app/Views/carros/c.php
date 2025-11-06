@@ -19,27 +19,30 @@
 
   <div class="form-group">
     <label for="transmision">Transmisión</label>
-    <input id="transmision" class="form-control" type="text" name="transmision">
+    <input id="transmision" value="<?=old('transmision')?>"  class="form-control" type="text" name="transmision">
   </div>
 
   <div class="form-group">
     <label for="color">Color</label>
-    <input id="color" class="form-control" type="text" name="color">
+    <input id="color" value="<?=old('color')?>"  class="form-control" type="text" name="color">
   </div>
 
   <div class="form-group">
     <label for="motor">Motor</label>
-    <input id="motor" class="form-control" type="text" name="motor">
+    <input id="motor" value="<?=old('motor')?>" class="form-control" type="text" name="motor">
   </div>
 
   <div class="form-group">
     <label for="plazas">Plazas</label>
-    <input id="plazas" class="form-control" type="text" name="plazas">
+    <input id="plazas" value="<?=old('plazas')?>" class="form-control" type="text" name="plazas">
   </div>
 
   <div class="custom-file form-group">
-    <input id="muestra" class="custom-file-input" type="file" name="muestra">
     <label for="muestra" class="custom-file-label">Muestra</label>
+    </div style="margin-top: 30px;">
+    <img class="img-thumbnail" src="<?=base_url()?>/uploads/<?='muestra'?>" width="100" alt="">
+    </div>
+    <input id="muestra" class="custom-file-input" type="file" name="muestra">
   </div>
 
   <button class="btn btn-success" type="submit">Agregar</button>
