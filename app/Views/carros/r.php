@@ -1,7 +1,7 @@
  <?=$header?>
 <br>
 
-<a href="<?=base_url('c')?>">añadir vehiculo</a>
+<a href="<?=base_url('c')?>" class="btn btn-danger" type="button">añadir vehiculo </a>
 
 
 
@@ -37,7 +37,11 @@
         <th><?=$carro['motor']?></th>
         <th><?=$carro['plazas']?></th>
         <th><?=$carro['muestra']?></th>
-        <th>Editar/Eliminar</th>
+        <th>
+        
+        
+        
+        <a href="<?=base_url('editar/'.$carro['id'])?>" class="btn btn-warning" type="button">editar</a>/Eliminar</th>
     </tr>
 <?php endforeach; ?>
 
