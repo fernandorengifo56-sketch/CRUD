@@ -1,8 +1,8 @@
  <?=$header?>
 <br>
 
-<a href="<?=base_url('c')?>" class="btn btn-danger" type="button">Añadir Vehiculo </a>
 
+<a href="<?=base_url('c')?>" class="btn btn-danger" type="button">Añadir Vehiculo </a>
 
  <div class="container"> 
         <table class="table table-light">

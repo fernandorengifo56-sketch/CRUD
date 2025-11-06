@@ -66,10 +66,10 @@ class C_carros extends Controller{
         
         $dcarro->where('id',$id)->delete($id); //adios imagen
 
+
+  public function editar($id = null){
         return $this->response->redirect(site_url('/r')); //volver a la pag principal
     }
-  
-  public function editar($id = null){ //Para cambiar los datos dl carro
 
     print_r($id);
 
