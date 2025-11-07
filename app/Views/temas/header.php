@@ -24,7 +24,7 @@
         <div class="container">
             
             <a class="navbar-brand h3 font-weight-bold text-uppercase">
-                <i class="fa-brands fa-chevrolet mr-2"></i>CHEVROLET 🚗 
+                <i class="fa-brands fa-chevrolet mr-2"></i>CHEVROLET 🚗🚙🏎️
             </a>
             
             </div>

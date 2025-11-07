@@ -1,12 +1,9 @@
 <?=$header?>
 <br>
 <br>
-
-
-
 <div class="card">
     <div class="card-body">
-        <h5 class="card-title">Añadir Carros</h5>
+        <h5 class="card-title">Editar Carros</h5>
         <p class="card-text"><form method="post" action="<?= base_url('/actualizar') ?>" enctype="multipart/form-data">
  
  
@@ -20,14 +17,7 @@
 
   <div class="form-group">
     <label for="combustible">Combustible</label>
-    <select id="combustible" class="form-control" name="plazas">
-                    <option value="" disabled selected>Seleccione el tipo de combustible</option>
-                    <option value="1" <?= old('combustible') == 'Gasolina' ? 'selected' : '' ?>>Gasolina</option>
-                    <option value="2" <?= old('combustible') == 'Diesel' ? 'selected' : '' ?>>Diesel</option>
-                    <option value="4" <?= old('combustible') == 'Gas (GNV)' ? 'selected' : '' ?>>Gas (GNV)</option>
-                    <option value="8" <?= old('combustible') == 'Electricidad' ? 'selected' : '' ?>>Electricidad</option>
-                    <option value="32" <?= old('combustible') == 'Hidrogeno' ? 'selected' : '' ?>>Hidrogeno</option>
-                </select>
+    <input id="combustible" value=<?=$M_carro['combustible']?> class="form-control" type="text" name="combustible">
   </div>
 
   <div class="form-group">
@@ -47,14 +37,7 @@
 
   <div class="form-group">
     <label for="plazas">Plazas</label>
-    <select id="plazas" class="form-control" name="plazas">
-                    <option value="" disabled selected>Seleccione el número de plazas</option>
-                    <option value="1" <?= old('plazas') == '1' ? 'selected' : '' ?>>1</option>
-                    <option value="2" <?= old('plazas') == '2' ? 'selected' : '' ?>>2</option>
-                    <option value="4" <?= old('plazas') == '4' ? 'selected' : '' ?>>4</option>
-                    <option value="8" <?= old('plazas') == '8' ? 'selected' : '' ?>>8</option>
-                    <option value="32" <?= old('plazas') == '32' ? 'selected' : '' ?>>32</option>
-                </select>
+    <input id="plazas" value=<?=$M_carro['plazas']?>  class="form-control" type="text" name="plazas">
   </div>
 
   <div class="custom-file form-group">
