@@ -35,7 +35,7 @@ class C_carros extends Controller{
             'color'       => 'required',
             'plazas'      => 'required|numeric',
             'muestra'     => [
-                'rules' => 'permit_empty|mime_in[muestra,image/jpg,image/jpeg,image/png]|max_size[muestra,1024]'
+                'rules' => 'uploaded[muestra]|mime_in[muestra,image/jpg,image/jpeg,image/png]|max_size[muestra,1024]'
             ]
         ];
 
