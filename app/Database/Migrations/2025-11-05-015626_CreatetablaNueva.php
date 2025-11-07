@@ -4,7 +4,7 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-class CreateTablaNueva extends Migration
+class Createchevrolet extends Migration
 {
     public function up()
     {
@@ -17,7 +17,7 @@ class CreateTablaNueva extends Migration
             ],
             'modelo' => [
                 'type'       => 'VARCHAR',
-                'constraint' => '255',
+                'constraint' => 100,
                 'null'       => false,
             ],
             'combustible' => [
@@ -28,17 +28,17 @@ class CreateTablaNueva extends Migration
             ],
             'transmision' => [
                 'type'       => 'VARCHAR',
-                'constraint' => '100',
+                'constraint' => 100,
                 'null'       => true,
             ],
             'motor' => [
                 'type'       => 'VARCHAR',
-                'constraint' => '100',
+                'constraint' => 100,
                 'null'       => true,
             ],
             'color' => [
                 'type'       => 'VARCHAR',
-                'constraint' => '50',
+                'constraint' => 50,
                 'null'       => true,
             ],
             'plazas' => [
@@ -49,18 +49,18 @@ class CreateTablaNueva extends Migration
             ],
             'muestra' => [
                 'type'       => 'VARCHAR',
-                'constraint' => '255',
+                'constraint' => 255,
                 'null'       => true,
             ],
         ]);
 
         $this->forge->addKey('id', true);
-        $this->forge->createTable('tablaNueva', true);
+        $this->forge->createTable('chevrolet', true);
     }
 
     public function down()
     {
-        $this->forge->dropTable('tablaNueva', true);
+        $this->forge->dropTable('chevrolet', true);
     }
 }
 

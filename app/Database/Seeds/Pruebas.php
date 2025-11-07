@@ -10,7 +10,7 @@ class Pruebas extends Seeder
     {
         $data = [
             [
-                'modelo'      => 'Corolla 2022',
+                'modelo'      => 'silverado 2022',
                 'motor'     => '1.8L VVT-i',
                 'color'       => 'Blanco',
                 'plazas'      => 5,
@@ -27,7 +27,7 @@ class Pruebas extends Seeder
                 'combustible' => 'Diesel',
             ],
             [
-                'modelo'      => 'Yaris Cross',
+                'modelo'      => 'bolt',
                 'motor'     => '1.5L Híbrido',
                 'color'       => 'Rojo',
                 'plazas'      => 5,
@@ -36,7 +36,7 @@ class Pruebas extends Seeder
             ],
         ];
 
-        // Insertar múltiples registros en la tabla 'vehiculos'
-        $this->db->table('tablanueva')->insertBatch($data);
+        
+        $this->db->table('chevrolet')->insertBatch($data);
     }
 }
